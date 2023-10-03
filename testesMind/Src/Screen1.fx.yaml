@@ -337,3 +337,10 @@ Screen1 As screen:
         Y: =628
         ZIndex: =22
 
+    Label1_1 As label:
+        Fill: =RGBA(241, 244, 249, 1)
+        Text: =varResultado
+        X: =35
+        Y: =306
+        ZIndex: =23
+
