@@ -344,9 +344,3 @@ Screen1 As screen:
         Y: =306
         ZIndex: =23
 
-    Label2 As label:
-        Text: ="teste label"
-        X: =40
-        Y: =40
-        ZIndex: =24
-
