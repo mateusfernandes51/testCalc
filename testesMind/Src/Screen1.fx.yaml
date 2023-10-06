@@ -10,7 +10,7 @@ Screen1 As screen:
         TemplatePadding: =0
         TemplateSize: =80
         Width: =288
-        X: =1014
+        X: =1006
         Y: =148
         ZIndex: =1
 
@@ -225,7 +225,8 @@ Screen1 As screen:
         OnSelect: |-
             =UpdateContext({varCalculo: varNumber & " - "});
             UpdateContext({varToggle: true});
-            UpdateContext({varCalcType:"Subtract"})
+            UpdateContext({varCalcType:"Subtract"});
+            UpdateContext({varNumber2 : varNumber})
         Size: =30
         Text: ="-"
         Width: =162
@@ -239,7 +240,8 @@ Screen1 As screen:
         OnSelect: |-
             =UpdateContext({varCalculo: varNumber & " / "});
             UpdateContext({varToggle: true});
-            UpdateContext({varCalcType:"Divide"})
+            UpdateContext({varCalcType:"Divide"});
+            UpdateContext({varNumber2 : varNumber})
         Size: =20
         Text: ="/"
         Width: =162
@@ -253,7 +255,8 @@ Screen1 As screen:
         OnSelect: |-
             =UpdateContext({varCalculo: varNumber & " x "});
             UpdateContext({varToggle: true});
-            UpdateContext({varCalcType:"Multiply"})
+            UpdateContext({varCalcType:"Multiply"});
+            UpdateContext({varNumber2 : varNumber})
         Size: =20
         Text: ="X"
         Width: =162
@@ -275,7 +278,7 @@ Screen1 As screen:
     botaoSoma_1 As button:
         Fill: =RGBA(0, 18, 107, 1)
         Height: =100
-        OnSelect: |-
+        OnSelect: |
             =UpdateContext({varCalculo: varCalculo & varNumber});
             Switch(
                 varCalcType,
@@ -291,19 +294,13 @@ Screen1 As screen:
             UpdateContext({varTudo: Text(varCalculo) & " = " & Text(varResultado)});
             Collect(varColecao,{Calculo: varTudo});
             UpdateContext({varToggle: true});
+            UpdateContext({varNumber: Text(varResultado)});
         Size: =30
         Text: ="="
         Width: =162
         X: =230
         Y: =630
         ZIndex: =16
-
-    Label1 As label:
-        Fill: =RGBA(241, 244, 249, 1)
-        Text: =varResultado
-        X: =35
-        Y: =440
-        ZIndex: =19
 
     linhaCalculo As label:
         Align: =Align.Right
@@ -336,17 +333,4 @@ Screen1 As screen:
         X: =1083
         Y: =628
         ZIndex: =22
-
-    Label1_1 As label:
-        Fill: =RGBA(241, 244, 249, 1)
-        Text: =varResultado
-        X: =35
-        Y: =306
-        ZIndex: =23
-
-    Label3 As label:
-        Text: ="terceiro teste"
-        X: =40
-        Y: =40
-        ZIndex: =24
 
