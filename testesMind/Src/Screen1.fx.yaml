@@ -101,13 +101,13 @@ Screen1 As screen:
 
     botao1 As button:
         Height: =100
-        OnSelect: |-
+        OnSelect: |
             =If(
                 varNumber = "0" || varToggle = true,
                 UpdateContext({varNumber: "1"}),
                 UpdateContext({varNumber: varNumber & 1})
             );
-            UpdateContext({varToggle:false})
+            UpdateContext({varToggle:false});
         Text: ="1"
         Width: =162
         X: =230
@@ -318,6 +318,7 @@ Screen1 As screen:
         Align: =Align.Right
         Fill: =RGBA(225, 225, 225, 1)
         Height: =102
+        OnSelect: =
         Size: =50
         Text: =varNumber
         Width: =718
@@ -333,4 +334,19 @@ Screen1 As screen:
         X: =1083
         Y: =628
         ZIndex: =22
+
+    testeLabel As text:
+        Default: =
+        Width: =180
+        X: =30
+        Y: =210
+        ZIndex: =23
+
+    Button1 As button:
+        OnSelect: |
+            =UpdateContext({testeLabel: "banana"})
+        Text: ="Botão"
+        X: =30
+        Y: =353
+        ZIndex: =24
 
