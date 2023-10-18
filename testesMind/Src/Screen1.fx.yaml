@@ -314,18 +314,6 @@ Screen1 As screen:
         Y: =88
         ZIndex: =20
 
-    linhaNumeros As label:
-        Align: =Align.Right
-        Fill: =RGBA(225, 225, 225, 1)
-        Height: =102
-        OnSelect: =
-        Size: =50
-        Text: =varNumber
-        Width: =718
-        X: =230
-        Y: =148
-        ZIndex: =21
-
     Button2 As button:
         Height: =31
         OnSelect: =ClearCollect(varColecao,{})
@@ -349,4 +337,14 @@ Screen1 As screen:
         X: =30
         Y: =353
         ZIndex: =24
+
+    testeLabel_1 As text:
+        Align: =Align.Right
+        Default: =varNumber
+        Height: =102
+        Size: =50
+        Width: =718
+        X: =230
+        Y: =148
+        ZIndex: =25
 
