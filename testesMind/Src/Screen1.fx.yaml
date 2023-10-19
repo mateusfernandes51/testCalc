@@ -252,11 +252,13 @@ Screen1 As screen:
     botaoMultiplicacao As button:
         Fill: =RGBA(0, 18, 107, 1)
         Height: =100
-        OnSelect: |-
+        OnSelect: |
             =UpdateContext({varCalculo: varNumber & " x "});
             UpdateContext({varToggle: true});
             UpdateContext({varCalcType:"Multiply"});
-            UpdateContext({varNumber2 : varNumber})
+            UpdateContext({varNumber2 : varNumber});
+            UpdateContext({varNumber: Text(varResultado)});
+            //If(Value(varNumber) > 0; Set(varResultado; varNumber2 * varNumber));;
         Size: =20
         Text: ="X"
         Width: =162
@@ -268,7 +270,9 @@ Screen1 As screen:
         Height: =100
         OnSelect: |-
             =UpdateContext({varNumber:"0"});
-            UpdateContext({varCalculo:"0"})
+            UpdateContext({varNumber2:"0"});
+            UpdateContext({varCalculo:"0"});
+            UpdateContext({varResultado:0});
         Text: ="DEL"
         Width: =162
         X: =592
@@ -295,6 +299,8 @@ Screen1 As screen:
             Collect(varColecao,{Calculo: varTudo});
             UpdateContext({varToggle: true});
             UpdateContext({varNumber: Text(varResultado)});
+            UpdateContext({varNumber2: Text(varResultado)});
+            UpdateContext({testeVar: false});
         Size: =30
         Text: ="="
         Width: =162
@@ -324,27 +330,65 @@ Screen1 As screen:
         ZIndex: =22
 
     testeLabel As text:
-        Default: =
+        Default: =testeVar
         Width: =180
-        X: =30
-        Y: =210
+        X: =20
+        Y: =148
         ZIndex: =23
 
     Button1 As button:
-        OnSelect: |
-            =UpdateContext({testeLabel: "banana"})
-        Text: ="Botão"
+        OnSelect: |-
+            =UpdateContext({testeVar: false});
+        Text: |-
+            ="Falso
+            "
         X: =30
-        Y: =353
+        Y: =404
         ZIndex: =24
 
     testeLabel_1 As text:
         Align: =Align.Right
         Default: =varNumber
         Height: =102
+        OnChange: |-
+            =//UpdateContext({testeVar: true});;
+            UpdateContext({varNumber : Text(testeLabel_1)})
         Size: =50
         Width: =718
         X: =230
         Y: =148
         ZIndex: =25
+
+    testeLabel_2 As text:
+        Default: |
+            =varNumber
+        Width: =180
+        X: =20
+        Y: =276
+        ZIndex: =26
+
+    testeLabel_3 As text:
+        Default: =varNumber2
+        Width: =180
+        X: =20
+        Y: =210
+        ZIndex: =27
+
+    testeLabel_4 As text:
+        Default: |
+            =varResultado
+        Width: =180
+        X: =20
+        Y: =338
+        ZIndex: =28
+
+    Button1_1 As button:
+        OnSelect: |-
+            =UpdateContext({testeVar: true});
+        Text: |-
+            ="Verdadeiro
+            "
+        X: =30
+        Y: =482
+        ZIndex: =29
 
