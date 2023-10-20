@@ -252,20 +252,21 @@ Screen1 As screen:
     botaoMultiplicacao As button:
         Fill: =RGBA(0, 18, 107, 1)
         Height: =100
-        OnSelect: |-
+        OnSelect: |
             =UpdateContext({varCalculo: varNumber & " x "});
             UpdateContext({varToggle: true});
             UpdateContext({varCalcType: "Multiply"});
+            If(testeVar = false,
+               UpdateContext({varNumber2: varNumber})
+            );
+            //UpdateContext({varNumber2: varNumber});;
             If(
                 testeVar,
-                UpdateContext({
-                    varResultado:
-                    varNumber2 * varNumber}
-                ),
+                UpdateContext({varResultado: varNumber2 * varNumber}),
                 UpdateContext({varNumber: Text(varResultado)})
             );
-            UpdateContext({varNumber2: varNumber});
             UpdateContext({testeVar: true});
+            UpdateContext({varNumber: Text(varResultado)});
         Size: =20
         Text: ="X"
         Width: =162
@@ -385,6 +386,8 @@ Screen1 As screen:
     testeLabel_4 As text:
         Default: |
             =varResultado
+        OnChange: |-
+            =UpdateContext({varNumber: Text(varResultado)})
         Width: =180
         X: =20
         Y: =338
